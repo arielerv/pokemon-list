@@ -1,2 +1,1 @@
-# Pokemon Front-End =)
-
+# Pokemon
