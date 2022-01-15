@@ -1,1 +1,2 @@
-# Pokemon List =)
+# Pokemon Front-End =)
+
