@@ -14,9 +14,29 @@ export function* getStats() {
     }
 }
 
+export function* getTypes() {
+    try {
+        const result = yield call(AppService.getTypes);
+        yield put(actions.getTypesSuccess(result));
+    } catch (error) {
+        yield put(actions.getTypesError('Falló!'));
+    }
+}
+
+export function* getData() {
+    try {
+        const result = yield call(AppService.getData);
+        yield put(actions.getDataSuccess(result));
+    } catch (error) {
+        yield put(actions.getTypesError('Falló!'));
+    }
+}
+
 export function* appSaga() {
     yield all([
         takeLatest(types.GET_STATS_REQUEST, getStats),
+        takeLatest(types.GET_TYPES_REQUEST, getTypes),
+        takeLatest(types.GET_DATA_REQUEST, getData),
     ]);
 }
 

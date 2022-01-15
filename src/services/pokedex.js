@@ -27,6 +27,19 @@ const pokedexService = {
         return Promise.all(abilitiesPromises)
             .then((abilities) => ({ ...data, abilities: abilities.map((ability) => ability.data) }));
     },
+    getPokemonsByType: async (selectedType) => {
+        const { data } = await http.get(`https://pokeapi.co/api/v2/type/${selectedType}`);
+        return {
+            pokemons: data.pokemon.map((pokemon) => {
+                const id = getId(pokemon.pokemon.url);
+                return {
+                    ...pokemon.pokemon,
+                    id,
+                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+                };
+            }),
+        };
+    },
 
 };
 

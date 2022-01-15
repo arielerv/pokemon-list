@@ -38,12 +38,16 @@ PokemonCard.propTypes = {
     setBackSide: PropTypes.func.isRequired,
     onExpand: PropTypes.func.isRequired,
     pokemon: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         name: PropTypes.string,
         image: PropTypes.string,
     }).isRequired,
-    backSide: PropTypes.number.isRequired,
+    backSide: PropTypes.string,
 
+};
+
+PokemonCard.defaultProps = {
+    backSide: undefined,
 };
 
 export default PokemonCard;

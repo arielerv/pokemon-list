@@ -23,10 +23,20 @@ export function* getPokemon({ pokemonId }) {
     }
 }
 
+export function* getPokemonsByType({ selectedType }) {
+    try {
+        const { pokemons } = yield call(PokedexService.getPokemonsByType, selectedType);
+        yield put(actions.getPokemonsByTypeSuccess(pokemons));
+    } catch (error) {
+        yield put(actions.getPokemonsByTypeError('Falló!'));
+    }
+}
+
 export function* pokedexSaga() {
     yield all([
         takeLatest(types.GET_POKEMONS_REQUEST, getPokemons),
         takeLatest(types.GET_POKEMON_REQUEST, getPokemon),
+        takeLatest(types.GET_POKEMONS_BY_TYPE_REQUEST, getPokemonsByType),
     ]);
 }
 
