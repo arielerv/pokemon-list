@@ -1,0 +1,5 @@
+const PREFIX = 'App/';
+
+export const GET_STATS_REQUEST = `${PREFIX}GET_STATS_REQUEST`;
+export const GET_STATS_SUCCESS = `${PREFIX}GET_STATS_SUCCESS`;
+export const GET_STATS_ERROR = `${PREFIX}GET_STATS_ERROR`;
